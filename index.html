@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Money Online</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .container {
+            border: 4px solid black;
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 600px;
+            background-color: white;
+            position: relative;
+            animation: borderGlow 2s infinite alternate;
+        }
+        @keyframes borderGlow {
+            0% { border-color: red; }
+            50% { border-color: yellow; }
+            100% { border-color: green; }
+        }
+        h1 {
+            color: blue;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: darkgreen;
+            font-style: italic;
+        }
+        .spin-btn {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: orange;
+            color: white;
+            font-size: 1.5em;
+            display: inline-block;
+            line-height: 100px;
+            cursor: pointer;
+            animation: spinButton 1s infinite;
+        }
+        @keyframes spinButton {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(360deg); }
+        }
+        .task-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .task-btn:disabled {
+            background-color: grey;
+        }
+        .earn-btn, .withdraw-btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+        .message {
+            font-size: 1.2em;
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Make Money Online</h1>
+        <h2>You can make up to 1,000 Dollar each day if you can complete all tasks.</h2>
+
+        <!-- Spinning Section -->
+        <h3>1. Spinning</h3>
+        <div class="spin-btn" id="spinBtn">Spin</div>
+        <div class="message" id="spinMsg">Click to spin the coins!</div>
+
+        <!-- Task Section -->
+        <h3>2. Join Telegram to earn 100,000 coins</h3>
+        <button class="task-btn" id="telegramBtn" onclick="joinTelegram()">Join Telegram</button>
+        <div class="message" id="telegramMsg"></div>
+
+        <h3>3. Join Facebook to earn 100,000 coins</h3>
+        <button class="task-btn" id="facebookBtn" onclick="joinFacebook()">Join Facebook</button>
+        <div class="message" id="facebookMsg"></div>
+
+        <h3>4. Join TikTok to earn 100,000 coins</h3>
+        <button class="task-btn" id="tiktokBtn" onclick="joinTiktok()">Join TikTok</button>
+        <div class="message" id="tiktokMsg"></div>
+
+        <h3>5. Subscribe to YouTube to earn 600,000 coins</h3>
+        <button class="task-btn" id="youtubeBtn" onclick="joinYouTube()">Join YouTube</button>
+        <div class="message" id="youtubeMsg"></div>
+
+        <!-- Earnings Section -->
+        <button class="earn-btn" onclick="showEarnings()">Earn</button>
+        <div id="earnings" class="hidden">
+            <p>1. If you earn 100,000 coins you have 25 dollars.</p>
+            <p>2. If you earn 500,000 coins you have 50 dollars.</p>
+            <p>3. If you earn 1,000,000 coins you have 100 dollars.</p>
+            <p>4. If you earn 2,000,000 coins you have 200 dollars.</p>
+        </div>
+
+        <!-- Withdraw Section -->
+        <button class="withdraw-btn" onclick="withdraw()">Withdraw</button>
+        <div id="withdrawMsg"></div>
+    </div>
+
+    <script>
+        let totalCoins = 0;
+        let spins = 0;
+
+        function spin() {
+            if (spins < 3) {
+                let amounts = [10, 50, 100, 200, 500, 1000, 100000];
+                let result = amounts[Math.floor(Math.random() * 5)];
+                totalCoins += result;
+                spins++;
+                document.getElementById('spinMsg').textContent = `You won ${result} coins! Total: ${totalCoins} coins`;
+                if (spins >= 3) {
+                    document.getElementById('spinBtn').disabled = true;
+                    document.getElementById('spinMsg').textContent = "You have finished daily trials.";
+                }
+            }
+        }
+
+        function joinTelegram() {
+            window.location.href = "https://t.me/GOGSmor";
+            totalCoins += 100000;
+            document.getElementById('telegramMsg').textContent = `You have earned 100,000 coins! Total: ${totalCoins} coins`;
+        }
+
+        function joinFacebook() {
+            window.location.href = "https://web.facebook.com/profile.php?id=61566279998745";
+            totalCoins += 100000;
+            document.getElementById('facebookMsg').textContent = `You have earned 100,000 coins! Total: ${totalCoins} coins`;
+        }
+
+        function joinTiktok() {
+            window.location.href = "https://www.tiktok.com/@assefagashaye";
+            totalCoins += 100000;
+            document.getElementById('tiktokMsg').textContent = `You have earned 100,000 coins! Total: ${totalCoins} coins`;
+        }
+
+        function joinYouTube() {
+            window.location.href = "https://www.youtube.com/channel/UCLBivSEh30F44ptAAgEVRUA?sub_confirmation=1";
+            totalCoins += 600000;
+            document.getElementById('youtubeMsg').textContent = `You have earned 600,000 coins! Total: ${totalCoins} coins`;
+        }
+
+        function showEarnings() {
+            document.getElementById('earnings').classList.remove('hidden');
+        }
+
+        function withdraw() {
+            if (totalCoins >= 2000000) {
+                document.getElementById('withdrawMsg').textContent = "You can withdraw now!";
+            } else {
+                document.getElementById('withdrawMsg').textContent = "You have not finished the tasks completely yet.";
+            }
+        }
+
+        document.getElementById('spinBtn').addEventListener('click', spin);
+    </script>
+</body>
+</html>
